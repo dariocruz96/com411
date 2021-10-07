@@ -1,12 +1,10 @@
-book = input("Towards which direction should I paint (up, down, left or right)?")
+direction = input("Towards which direction should I paint (up, down, left or right)?")
 
-if up == "up":
-  print("I like adventure books!")
-elif down == "down":
-  print("I like horror books!")
-elif book == "left":
-  print("I like comedy books!")
-elif book == "right":
-  print("I like action books!")
-
-print("Finished reading book.")
+if direction == "up":
+    print("I am painting in the upward direction!")
+elif direction == "down":
+    print("I am painting in the downward direction!")
+elif direction == "left":
+    print("I am painting in the leftward direction!")
+elif direction == "right":
+    print("I am painting in the rightward direction!")
