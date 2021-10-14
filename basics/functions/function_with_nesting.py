@@ -1,7 +1,9 @@
-def listen():
-    print(f"That was a loud {word}!")
+def identify():
+    word = input("Please type a word representing what you see:\n")
+    if word == "a large boulder":
+        print("It's time to run!")
+    else:
+        print("We will be fine.")
 
 
-word = input("What sound did I hear?\n")
-
-listen()
+identify()
