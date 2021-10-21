@@ -23,7 +23,6 @@ def backwords(name):
     return name[::-1]
 
 
-
 print("Please enter your name")
 name = input()
 greet_user(name)
@@ -56,4 +55,3 @@ elif option == 5:
         elif count % 2 == 1:
             lower(name)
             count += 1
-
