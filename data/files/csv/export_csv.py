@@ -1,5 +1,5 @@
 def export(filePath, numberBots):
-    print("Exporting...")
+    print("Exporting...", end="")
     with open(filePath, "a") as file:
         for bot in range(numberBots):
             bot_id = input("Enter bot id:\n")

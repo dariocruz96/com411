@@ -1,6 +1,6 @@
 def search(fileName):
     with open(fileName) as file:
-        print("Searching...")
+        print("Searching...", end="")
         for line in file:
             print(f"Looked in the {line.strip()}.")
     print("...Done!")

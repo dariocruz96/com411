@@ -2,7 +2,7 @@ import csv
 
 
 def read(filepath):
-    print("Extracting...Done!")
+    print("Extracting...", end="")
     print("The extracted names are:")
     with open("bots.csv") as file:
         csv_reader = csv.reader(file)
@@ -10,6 +10,7 @@ def read(filepath):
         for values in csv_reader:
             # display only the names
             print(values[1])
+    print("Done!")
 
 
 def run():

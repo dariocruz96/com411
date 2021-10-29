@@ -2,16 +2,18 @@ import json
 
 
 def read(filePath):
-    print("Reading...Done!")
+    print("Reading...", end="")
     with open(filePath) as file:
         data = json.load(file)
+    print("Done!")
     return data
 
 
 def save(newfilePath, data):
-    print("Exporting...Done!")
+    print("Exporting...", end="")
     with open(newfilePath, "w") as file:
         json.dump(data, file, indent=4)
+    print("Done!")
 
 
 def run():

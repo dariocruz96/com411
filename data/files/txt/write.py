@@ -1,5 +1,5 @@
 def search(filePath):
-    print("Searching...")
+    print("Searching...", end="")
     sections = ""
     books = "Books:\n"
 
@@ -15,7 +15,7 @@ def search(filePath):
 
 
 def save(filePath, storedData):
-    print("Saving...")
+    print("Saving...", end="")
     with open(filePath, "w") as file:
         file.write(storedData)
     print("Done!")
