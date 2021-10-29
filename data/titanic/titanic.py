@@ -20,14 +20,9 @@ def display_menu():
           "[1] Display the names of all passengers\n"
           "[2] Display the number of passengers that survived\n"
           "[3] Display the number of passengers per gender\n"
-          "[4] Display the number of passengers per age group\n")
-    while True:
-        choice = int(input())
-        if 4 < choice:
-            print("Sorry, that option is not valid.")
-            continue
-        else:
-            break
+          "[4] Display the number of passengers per age group\n"
+          "[5] Display the number of survivors per age group\n")
+    choice = int(input())
     return choice
 
 
@@ -45,6 +40,7 @@ def display_number_survivors():
         if survival_status == 1:
             num_survived += 1
     print(f"{num_survived} passengers survived.")
+    return num_survived
 
 
 def display_passengers_per_gender():
@@ -72,7 +68,29 @@ def display_passengers_per_age_group():
                 adults += 1
             else:
                 elderly += 1
-    print(f"children: {children}, adults: {adults}, elderly: {elderly}")
+    return children, adults, elderly
+
+
+def display_survivors_per_age_group():
+    passengers_per_age_group = display_passengers_per_age_group()
+    children_surv = 0
+    adults_surv = 0
+    elderly_surv = 0
+    for passenger in records:
+        if passenger[5] != "":
+            age = float(passenger[5])
+            survived = int(passenger[1])
+            if age < 18 and survived == 1:
+                children_surv += 1
+            elif age < 65 and survived == 1:
+                adults_surv += 1
+            elif age >= 65 and survived == 1:
+                elderly_surv += 1
+    print(f"children: {children_surv}/{passengers_per_age_group[0]}, "
+          f"adults: {adults_surv}/{passengers_per_age_group[1]}, "
+          f"elderly: {elderly_surv}/{passengers_per_age_group[2]}")
+
+
 
 
 def run():
@@ -87,7 +105,10 @@ def run():
     elif selected_option == 3:
         display_passengers_per_gender()
     elif selected_option == 4:
-        display_passengers_per_age_group()
+        age = display_passengers_per_age_group()
+        print(f"children: {age[0]}, adults: {age[1]}, elderly: {age[2]}")
+    elif selected_option == 5:
+        display_survivors_per_age_group()
     else:
         print("Error! Option not recognised!")
 
