@@ -33,9 +33,18 @@ def display_menu():
 
 def display_passenger_names():
     print("The names of the passengers are...\n")
-    for names in records:
-        passenger_name = names[3]
+    for passenger in records:
+        passenger_name = passenger[3]
         print(passenger_name)
+
+
+def display_number_survivors():
+    num_survived = 0
+    for passenger in records:
+        survival_status = int(passenger[1])
+        if survival_status == 1:
+            num_survived += 1
+    print(f"{num_survived} passengers survived.")
 
 
 def run():
@@ -43,10 +52,12 @@ def run():
     print(f"Successfully loaded {len(records)} records.\n")
     selected_option = display_menu()
     print(f"You have selection option: {selected_option}\n")
-    if selected_option != 1:
-        print("Error! Option not recognised!")
-    else:
+    if selected_option == 1:
         display_passenger_names()
+    elif selected_option == 2:
+        display_number_survivors()
+    else:
+        print("Error! Option not recognised!")
 
 
 if __name__ == "__main__":
