@@ -31,7 +31,7 @@ def display_menu():
     return choice
 
 
-def display_passenger_names():
+def display_passengers_names():
     print("The names of the passengers are...\n")
     for passenger in records:
         passenger_name = passenger[3]
@@ -47,7 +47,7 @@ def display_number_survivors():
     print(f"{num_survived} passengers survived.")
 
 
-def display_passenger_per_gender():
+def display_passengers_per_gender():
     females = 0
     males = 0
     for passenger in records:
@@ -59,17 +59,35 @@ def display_passenger_per_gender():
     print(f"females: {females}, males: {males}")
 
 
+def display_passengers_per_age_group():
+    children = 0
+    adults = 0
+    elderly = 0
+    for passenger in records:
+        if passenger[5] != "":
+            age = float(passenger[5])
+            if age < 18:
+                children += 1
+            elif age < 65:
+                adults += 1
+            else:
+                elderly += 1
+    print(f"children: {children}, adults: {adults}, elderly: {elderly}")
+
+
 def run():
     load_data("titanic.csv")
     print(f"Successfully loaded {len(records)} records.\n")
     selected_option = display_menu()
     print(f"You have selection option: {selected_option}\n")
     if selected_option == 1:
-        display_passenger_names()
+        display_passengers_names()
     elif selected_option == 2:
         display_number_survivors()
     elif selected_option == 3:
-        display_passenger_per_gender()
+        display_passengers_per_gender()
+    elif selected_option == 4:
+        display_passengers_per_age_group()
     else:
         print("Error! Option not recognised!")
 
