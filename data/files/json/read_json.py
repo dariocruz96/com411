@@ -17,4 +17,9 @@ def read(filePath):
             print(f"{bot_name} has a strength level of {strength} and a speed level of {speed}.")
 
 
-read("robocity.json")
+def run():
+    read("robocity.json")
+
+
+if __name__ == "__main__":
+    run()
