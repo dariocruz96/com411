@@ -42,11 +42,14 @@ def menu():
     return selection
 
 
+def run():
+    started("Reading data from athlete_events.csv...")
+    completed()
+    error("Invalid Selection!")
+    menu()
+    display_medal_tally()
+    display_team_medal_tally()
 
 
-started("Reading data from athlete_events.csv...")
-completed()
-error("Invalid Selection!")
-menu()
-display_medal_tally()
-display_team_medal_tally()
+if __name__ == "__main__":
+    run()
