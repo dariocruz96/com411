@@ -15,27 +15,55 @@ def error(msg=""):
 
 
 def display_medal_tally(tally):
-    # tally = {"Gold": 14142, "Silver": 12323, "Bronze": 11111}
-    # print(gold : tally.count("gold"))
+    gold = 0
+    silver = 0
+    bronze = 0
+    for medal in tally:
+        if "Gold" in medal:
+            gold += 1
+        elif "Silver" in medal:
+            silver += 1
+        elif "Bronze" in medal:
+            bronze += 1
+
+    output = {"Gold": gold, "Silver": silver, "Bronze": bronze}
     z = ""
-    for key, value in tally.items():
+    for key, value in output.items():
         print(f"| {key:10}| {value}{z:5}|")
+    return output
 
 
 def display_team_medal_tally(team_tally):
-    tally = {"Gold": 14142, "Silver": 12323, "Bronze": 11111}
-    team_tally = {"Team name": tally}
-
-    for key, value in team_tally.items():
-        print(f"{key}\n\t{value}")
-
+    pass
+    teams = team_tally
+    output = {}
+    gold = 0
+    silver = 0
+    bronze = 0
+    for i in range(len(teams)):
+        for j in range(len(teams)):
+            if teams[i] == team_tally[j]:
+                if "Gold" in teams[j]:
+                    gold += 1
+                elif "Silver" in teams[j]:
+                    silver += 1
+                elif "Bronze" in teams[j]:
+                    bronze += 1
+                # output.add("{teams[i]}\nGold: {gold}, Silver: {silver}, Bronze: {bronze}}}")
+            output[teams[i]].append("{teams[i]}\nGold: {gold}, Silver: {silver}, Bronze: {bronze}}}")
+    print(output)
 
 def display_years(years):
-    print(years.sort(reverse=True))
+    output = set()
+    for row in range(len(years)):
+        output.add(int(years[row][9]))
+    years_reversed = list(output)
+    output = sorted(years_reversed, reverse=True)
+    print(*output, sep="\n")
 
 
 def menu():
-    selection = input("\n\t[years]\t\tList unique_years\n"
+    selection = input("\n\t[years]\t\tList unique years\n"
                       "\t[tally]\t\tTally up medals\n"
                       "\t[team]\t\tTally up medals for each team\n"
                       "\t[exit]\t\tExit the program\n")
