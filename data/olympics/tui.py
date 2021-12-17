@@ -1,83 +1,45 @@
+LINE_WIDTH = 85
+
+
 def started(msg=""):
-    for i in range(85):
-        print("-", end="")
-    if msg != "":
-        print(f"\nOperation started: {msg}")
+    output = f"Operation started: {msg}..."
+    dashes = "-" * LINE_WIDTH
+    print(f"{dashes}\n{output}\n")
 
 
 def completed():
-    print("\nOperation completed.")
-    started("")
+    dashes = "-" * LINE_WIDTH
+    print(f"\nOperation completed.\n{dashes}\n")
 
 
-def error(msg=""):
-    print(f"\nError! {msg}")
-
-
-def display_medal_tally(tally):
-    gold = 0
-    silver = 0
-    bronze = 0
-    for medal in tally:
-        if "Gold" in medal:
-            gold += 1
-        elif "Silver" in medal:
-            silver += 1
-        elif "Bronze" in medal:
-            bronze += 1
-
-    output = {"Gold": gold, "Silver": silver, "Bronze": bronze}
-    z = ""
-    for key, value in output.items():
-        print(f"| {key:10}| {value}{z:5}|")
-    return output
-
-
-def display_team_medal_tally(team_tally):
-    pass
-    teams = team_tally
-    output = {}
-    gold = 0
-    silver = 0
-    bronze = 0
-    for i in range(len(teams)):
-        for j in range(len(teams)):
-            if teams[i] == team_tally[j]:
-                if "Gold" in teams[j]:
-                    gold += 1
-                elif "Silver" in teams[j]:
-                    silver += 1
-                elif "Bronze" in teams[j]:
-                    bronze += 1
-                # output.add("{teams[i]}\nGold: {gold}, Silver: {silver}, Bronze: {bronze}}}")
-            output[teams[i]].append("{teams[i]}\nGold: {gold}, Silver: {silver}, Bronze: {bronze}}}")
-    print(output)
-
-def display_years(years):
-    output = set()
-    for row in range(len(years)):
-        output.add(int(years[row][9]))
-    years_reversed = list(output)
-    output = sorted(years_reversed, reverse=True)
-    print(*output, sep="\n")
+def error(msg):
+    print(f"Error! {msg}\n")
 
 
 def menu():
-    selection = input("\n\t[years]\t\tList unique years\n"
-                      "\t[tally]\t\tTally up medals\n"
-                      "\t[team]\t\tTally up medals for each team\n"
-                      "\t[exit]\t\tExit the program\n")
-    return selection
+    print(f"""Please select one of the following options:
+    {"[years]":<10} List unique years
+    {"[tally]":<10} Tally up medals
+    {"[team]":<10} Tally up medals for each team
+    {"[exit]":<10} Exit the program
+    """)
+    selection = input("Your selection: ")
+    return selection.strip().lower()
 
 
-def run():
-    started("Reading data from athlete_events.csv...")
-    completed()
-    error("Invalid Selection!")
-    menu()
-    display_medal_tally()
-    display_team_medal_tally()
+def display_medal_tally(tally):
+    print(f"| {'Gold':<10} | {tally['Gold']:<10} |")
+    print(f"| {'Silver':<10} | {tally['Silver']:<10} |")
+    print(f"| {'Bronze':<10} | {tally['Bronze']:<10} |")
 
 
-if __name__ == "__main__":
-    run()
+def display_team_medal_tally(team_tally):
+    for team, tally in team_tally.items():
+        print(team)
+        print(f"\tGold:{tally['Gold']}, Silver:{tally['Silver']}, Bronze:{tally['Bronze']}")
+
+
+def display_years(years):
+    sorted_years = sorted(years, reverse=True)
+    for year in sorted_years:
+        print(year)
