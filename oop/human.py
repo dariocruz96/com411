@@ -6,6 +6,7 @@ class Human:
         self.age = age
         self.energy = Human.MAX_ENERGY
 
+    # Magic methods
     def __repr__(self):
         return f'human(name={self.name}, age={self.age}, energy={self.energy}'
 

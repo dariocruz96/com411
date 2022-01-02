@@ -5,7 +5,7 @@ class Robot:
         self.name = name
         self.age = age
         self.energy = Robot.MAX_ENERGY
-
+    # Magic methods
     def __repr__(self):
         return f'robot(name={self.name}, age={self.age}, energy={self.energy}'
 
