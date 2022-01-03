@@ -6,6 +6,16 @@ class Human:
         self.age = age
         self.energy = Human.MAX_ENERGY
 
+    def grow(self):
+        self.age += 1
+
+    def eat(self, amount):
+        self.energy += amount
+        if self.energy > 100:
+            self.energy = 100
+        elif self.energy < 0:
+            self.energy = 0
+
     # Magic methods
     def __repr__(self):
         return f'human(name={self.name}, age={self.age}, energy={self.energy}'
@@ -21,3 +31,7 @@ class Human:
 if (__name__ == "__main__"):
     human = Human()
     human.display()
+    human.grow()
+    human.eat(-10)
+
+    print(human)
