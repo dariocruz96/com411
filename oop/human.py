@@ -1,7 +1,7 @@
 class Human:
     MAX_ENERGY = 100
 
-    def __init__(self, name="Human", age=0):
+    def __init__(self, name, age=0):
         self.name = name
         self.age = age
         self.energy = Human.MAX_ENERGY
@@ -29,7 +29,7 @@ class Human:
 
 
 if (__name__ == "__main__"):
-    human = Human()
+    human = Human("Dario")
     human.display()
     human.grow()
     human.eat(-10)
